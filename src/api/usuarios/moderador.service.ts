@@ -2,9 +2,9 @@ import type { Moderador, CreateModerador, UpdateModerador } from "../../types/mo
 import { genericRequest } from "../../utils/genericRequest";
 
 export function create(data: CreateModerador) {
-  return genericRequest<Moderador>("/usuarios/moderadores", "POST", data);
+  return genericRequest<Moderador>("/api/usuarios/moderadores", "POST", data);
 }
 
 export function update(id: string, data: UpdateModerador) {
-  return genericRequest<Moderador>(`/usuarios/moderadores/${id}`, "PATCH", data);
+  return genericRequest<Moderador>(`/api/usuarios/moderadores/${id}`, "PATCH", data);
 }

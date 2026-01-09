@@ -2,7 +2,7 @@ import type { Resposta, CreateResposta, UpdateResposta } from "../../types/respo
 import { genericRequest } from "../../utils/genericRequest";
 
 export function create(data: CreateResposta) {
-  return genericRequest<Resposta>('/posts/respostas', 'POST', data);
+  return genericRequest<Resposta>('/api/posts/respostas', 'POST', data);
 }
 
 export function findAll(postId?: string, respostaId?: string) {
@@ -12,19 +12,19 @@ export function findAll(postId?: string, respostaId?: string) {
   if (respostaId) params.append('respostaId', respostaId);
 
   const query = params.toString();
-  const url = query ? `/posts/respostas?${query}` : '/posts/respostas';
+  const url = query ? `/api/posts/respostas?${query}` : '/api/posts/respostas';
 
   return genericRequest<Resposta[]>(url, 'GET');
 }
 
 export function findOne(id: string) {
-  return genericRequest<Resposta>(`/posts/respostas/${id}`, 'GET');
+  return genericRequest<Resposta>(`/api/posts/respostas/${id}`, 'GET');
 }
 
 export function update(id: string, data: UpdateResposta) {
-  return genericRequest<Resposta>(`/posts/respostas/${id}`, 'PATCH', data);
+  return genericRequest<Resposta>(`/api/posts/respostas/${id}`, 'PATCH', data);
 }
 
 export function remove(id: string) {
-  return genericRequest<Resposta>(`/posts/respostas/${id}`, 'DELETE');
+  return genericRequest<Resposta>(`/api/posts/respostas/${id}`, 'DELETE');
 }

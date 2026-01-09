@@ -1,0 +1,149 @@
+.card, .card_comment {
+  width: 100%;
+  max-width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  padding: 14px 16px 12px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.card_comment {
+  background-color: var(--color-hover-card-post);
+}
+
+.card:hover {
+  background: var(--color-hover-card-post);
+}
+
+.line01 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.profile_picture {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.username {
+  font-weight: 600;
+  color: var(--color-text-strong);
+}
+
+.infos p {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.divider {
+  margin: 0 4px;
+}
+
+.time {
+  color: var(--color-text-muted);
+}
+
+.action_btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--color-icon);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.action_btn:hover {
+  background: var(--color-icon-bg);
+  color: var(--color-icon-hover);
+}
+
+.text_content {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text);
+  white-space: pre-wrap;
+}
+
+.media {
+  width: 100%;
+  margin-top: 8px;
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  display: block;
+}
+
+.post_picture {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.2s ease;
+}
+
+.media:hover .post_picture {
+  filter: brightness(0.95);
+}
+
+.time_details {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.line02 {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 4px;
+}
+
+.like,
+.comment {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.like i,
+.comment i {
+  font-size: 18px;
+}
+
+.like:hover {
+  color: #f91880;
+}
+
+.comment:hover {
+  color: #1d9bf0;
+}
+
+.total_likes,
+.total_comments {
+  font-size: 14px;
+}

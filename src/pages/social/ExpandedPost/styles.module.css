@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  margin-bottom: 500px;
+}
+
+.return_box {
+  background: var(--color-background);
+  opacity: 90%;
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.return_box i {
+  margin-right: 20px;
+}
+
+.return_box p {
+  color: var(--color-text);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.author_name { 
+  color: #4da3ff; 
+  text-decoration: none; 
+  font-weight: 500; 
+} 
+
+.author_name:hover { 
+  text-decoration: underline; 
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

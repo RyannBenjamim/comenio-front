@@ -1,9 +1,11 @@
-import { genericRequest } from "../utils/genericRequest";
+import axios from 'axios';
 
-export function signin(email: string, senha: string) {
-  return genericRequest<{ access_token: string }>(
-    '/auth/signin',
-    'POST',
-    { email, senha }
+export async function signin(email: string, senha: string) {
+  const response = await axios.post(
+    'http://localhost:3000/api/auth/signin', 
+    { email, senha }, 
+    { headers: { 'Content-Type': 'application/json' } }
   );
+
+  return response.data
 }

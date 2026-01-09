@@ -1,0 +1,38 @@
+.posts_main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px; 
+  width: 100%;
+}
+
+.post {
+  width: 100%;
+  aspect-ratio: 1 / 1;           
+  background: var(--color-surface);        
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  overflow: hidden;
+  border-radius: 4px;     
+  cursor: pointer;      
+}
+
+.post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            
+}
+
+@media (max-width: 600px) {
+  main {
+    gap: 1px;
+  }
+}
+
+@media (max-width: 430px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

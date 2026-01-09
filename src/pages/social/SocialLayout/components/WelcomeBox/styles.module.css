@@ -1,0 +1,101 @@
+.welcome_box {
+  width: 100%;
+  height: 250px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding-bottom: 15px;
+
+  box-shadow: var(--shadow-card);
+}
+
+.welcome_loader {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+}
+
+.welcome_box .wb_header {
+  height: 78px;
+  width: 100%;
+
+  background: linear-gradient(
+    180deg,
+    var(--color-primary-light),
+    var(--color-primary)
+  );
+
+  border-bottom: 1px solid var(--color-border);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.welcome_box .wb_picture {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+
+  overflow: hidden;
+  background-color: var(--color-surface);
+
+  border: 3px solid var(--color-surface);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.welcome_box .wb_picture .img {
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.welcome_box .wb_text {
+  margin-top: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+.welcome_box .wb_text .text01 {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.welcome_box .wb_text .text02 {
+  color: var(--color-text-strong);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.welcome_box .wb_text .cargo {
+  background: var(--color-tag);
+  color: var(--color-tag-text);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  padding: 4px 10px;
+  border-radius: 8px;
+
+  width: fit-content;
+  margin: 0 auto;
+}

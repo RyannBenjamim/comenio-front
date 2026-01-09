@@ -2,7 +2,7 @@ import type { Post, CreatePost, UpdatePost } from "../../types/posts";
 import { genericRequest } from "../../utils/genericRequest";
 
 export function create(data: CreatePost) {
-  return genericRequest<Post>('/posts', 'POST', data);
+  return genericRequest<Post>('/api/posts', 'POST', data);
 }
 
 export function findAll(comunidadeId?: string, feedId?: string) {
@@ -12,19 +12,19 @@ export function findAll(comunidadeId?: string, feedId?: string) {
   if (feedId) params.append('feedId', feedId);
 
   const query = params.toString();
-  const url = query ? `/posts?${query}` : '/posts';
+  const url = query ? `/api/posts?${query}` : '/posts';
 
   return genericRequest<Post[]>(url, 'GET');
 }
 
 export function findOne(id: string) {
-  return genericRequest<Post>(`/posts/${id}`, 'GET');
+  return genericRequest<Post>(`/api/posts/${id}`, 'GET');
 }
 
 export function update(id: string, data: UpdatePost) {
-  return genericRequest<Post>(`/posts/${id}`, 'PATCH', data);
+  return genericRequest<Post>(`/api/posts/${id}`, 'PATCH', data);
 }
 
 export function remove(id: string) {
-  return genericRequest<Post>(`/posts/${id}`, 'DELETE');
+  return genericRequest<Post>(`/api/posts/${id}`, 'DELETE');
 }

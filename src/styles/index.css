@@ -14,15 +14,15 @@ html, body {
 }
 
 :root {
-  --header-background-color: #0990FF; 
+  --header-background-color: #1C222C; 
   --color-background: #F4F2EE;       
   --color-surface: #ffffff;
 
-  --color-primary: #0990FF;
-  --color-primary-light: #4db3ff;
+  --color-primary: #1C222C;
+  --color-primary-light: #26303D;
 
   --color-btn-text: #ffffff;
-  --color-tag-text: #0990FF;
+  --color-tag-text: #1C222C;
 
   --color-text: #222222;
   --color-text-muted: #6B7280;
@@ -56,6 +56,8 @@ html, body {
   --color-text-strong: #ffffff;
 
   --color-border: #2A2F36;
+
+  --color-hover-card-post: #ffffff0f;
 
   --color-placeholder: #6B7280;
   --input-search-text: #F3F4F6;

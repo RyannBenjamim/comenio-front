@@ -13,10 +13,13 @@ export interface Usuario {
   instituicaoId: string;
   primeiroNome: string;
   sobrenome: string;
+  nickname: string,
+  bio: string,
   email: string;
   dataNascimento: string;
   telefone: string;
   fotoPerfilCaminho?: string;
+  fotoPerfilUrl?: string;
   cargo: Cargo;
   createdAt: string;
   updatedAt: string;
@@ -30,7 +33,6 @@ export interface CreateUsuario {
   senha: string
   dataNascimento: string;
   telefone: string;
-  fotoPerfilCaminho?: string;
   cargo: Cargo;
 }
 

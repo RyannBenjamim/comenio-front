@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { useTheme } from "../../../context/ThemeContext";
 import styles from "./styles.module.css";
 import { Outlet } from "react-router-dom";
-import logo from "../../../assets/logo.svg";
-import logoV2 from '../../../assets/logov2.svg'
-import profileImage from "../../../assets/minha-foto.jpg";
+import Header from "./components/Header/Header";
+import Ranking from "./components/Ranking/Ranking";
+import WelcomeBox from "./components/WelcomeBox/WelcomeBox";
+import LeftAside from "./components/LeftAside/LeftAside";
 
 const SocialLayout = () => {
-  const { theme, toggleTheme } = useTheme();
   const [showBackToTop, setShowBackToTop] = useState(false);
   const mainRef = useRef<HTMLDivElement | null>(null);
 
@@ -30,49 +29,46 @@ const SocialLayout = () => {
     }
 
     animate();
+    setShowBackToTop(false);
   }
 
   useEffect(() => {
     const main = mainRef.current;
     if (!main) return;
 
-    let isScrolling = false;
-    let scrollDelta = 0;
+    let velocity = 0;
     let animationFrame: number | null = null;
 
-    function smoothScroll() {
+    const smoothScroll = () => {
       if (!main) return;
 
-      main.scrollTop += scrollDelta * 0.15;
-      scrollDelta *= 0.85;
+      main.scrollTop += velocity * 0.32; 
+      velocity *= 0.93;                 
 
-      if (Math.abs(scrollDelta) < 0.2) {
-        isScrolling = false;
+      if (Math.abs(velocity) < 0.25) {
         animationFrame = null;
         return;
       }
 
       animationFrame = requestAnimationFrame(smoothScroll);
-    }
+    };
 
-    function handleWheel(e: WheelEvent) {
+    const handleWheel = (e: WheelEvent) => {
       if (!main) return;
 
       e.preventDefault();
 
-      scrollDelta = e.deltaY;
+      velocity = e.deltaY * 0.24;
 
-      if (e.deltaY < 0) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
+      const isScrollingUp = e.deltaY < 0;
+      const isAtTop = main.scrollTop <= 0;
 
-      if (!isScrolling) {
-        isScrolling = true;
-        smoothScroll();
+      setShowBackToTop(isScrollingUp && !isAtTop);
+
+      if (!animationFrame) {
+        animationFrame = requestAnimationFrame(smoothScroll);
       }
-    }
+    };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
 
@@ -84,89 +80,10 @@ const SocialLayout = () => {
 
   return (
     <div className={styles.global_container}>
-      <header>
-        <div className={styles.header_01}></div>
-        <div className={styles.header_02}>
-          <div className={styles.content}>
-            <img src={theme === 'light' ? logo : logoV2} alt="logo" className={styles.logo} />
-            <div className={styles.search_box}>
-              <i className="fa-solid fa-magnifying-glass"></i>
-              <input
-                type="text"
-                name="search"
-                placeholder="Pesquise por tópicos e discussões"
-                className={styles.input_search}
-              />
-            </div>
-            <div className={styles.header_icons}>
-              <div className={styles.theme_btn} onClick={toggleTheme}>
-                {theme === 'light' ? <i className="fa-solid fa-moon"></i> : <i className="fa-solid fa-sun"></i>}
-              </div>
-              <div
-                className={styles.profile_picture}
-                style={{ backgroundImage: `url(${profileImage})` }}
-              ></div>
-            </div>
-          </div>
-        </div>
-      </header>
-
+      <Header />
+     
       <div className={styles.main_container}>
-        <aside className={styles.left_aside}>
-          <div className={styles.la_01}>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-house"></i>
-              <p>Página inicial</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-rss"></i>
-              <p>Feed</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-ranking-star"></i>
-              <p>Atividades</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-circle-user"></i>
-              <p>Perfil</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-ranking-star"></i>
-              <p>Ranking</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-plus"></i>
-              <p>Postar</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-gear"></i>
-              <p>Configurações</p>
-            </div>
-          </div>
-
-          <div className={styles.la_02}>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-users"></i>
-              <p>Matemática</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-users"></i>
-              <p>Português</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-users"></i>
-              <p>Física</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-users"></i>
-              <p>História</p>
-            </div>
-            <div className={styles.card_link}>
-              <i className="fa-solid fa-users"></i>
-              <p>Ver todas...</p>
-            </div>
-          </div>
-        </aside>
+        <LeftAside />
 
         <main ref={mainRef} className={styles.main_content}>
           <Outlet />
@@ -180,19 +97,8 @@ const SocialLayout = () => {
         </main>
 
         <aside className={styles.right_aside}>
-          <div className={styles.welcome_box}>
-            <div className={styles.wb_header}></div>
-            <div
-              className={styles.wb_picture}
-              style={{ backgroundImage: `url(${profileImage})` }}
-            ></div>
-            <div className={styles.wb_text}>
-              <p className={styles.text01}>Bem vindo de volta</p>
-              <p className={styles.text02}>Ryan</p>
-              <div className={styles.cargo}>Aluno</div>
-            </div>
-          </div>
-          <div className={styles.ranking_box}>Ranking de alunos</div>
+          <WelcomeBox />
+          <Ranking />
         </aside>
       </div>
     </div>

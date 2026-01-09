@@ -2,9 +2,9 @@ import type { Responsavel, CreateResponsavel, UpdateResponsavel } from "../../ty
 import { genericRequest } from "../../utils/genericRequest";
 
 export function create(data: CreateResponsavel) {
-  return genericRequest<Responsavel>('/usuarios/responsaveis', 'POST', data);
+  return genericRequest<Responsavel>('/api/usuarios/responsaveis', 'POST', data);
 }
 
 export function update(id: string, data: UpdateResponsavel) {
-  return genericRequest<Responsavel>(`/usuarios/responsaveis/${id}`, 'PATCH', data);
+  return genericRequest<Responsavel>(`/api/usuarios/responsaveis/${id}`, 'PATCH', data);
 }
