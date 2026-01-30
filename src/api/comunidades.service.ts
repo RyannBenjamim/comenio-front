@@ -3,11 +3,18 @@ import { genericRequest } from "../utils/genericRequest";
 import type { ApiResponse } from "../types/ApiResponse";
 
 export function create(data: CreateComunidade) {
-  return genericRequest<Comunidade>('/api/comunidades', 'POST', data);
+  return genericRequest<ApiResponse<Comunidade>>('/api/comunidades', 'POST', data);
 }
 
-export function findAll() {
-  return genericRequest<ApiResponse<Comunidade[]>>('/api/comunidades', 'GET');
+export function findAll(turmaId?: string) {
+  const params = new URLSearchParams();
+
+  if (turmaId) params.append('turmaId', turmaId);
+
+  const query = params.toString();
+  const url = query ? `/api/comunidades?${query}` : '/api/comunidades';
+
+  return genericRequest<ApiResponse<Comunidade[]>>(url, 'GET');
 }
 
 export function getStudentCommunities() {

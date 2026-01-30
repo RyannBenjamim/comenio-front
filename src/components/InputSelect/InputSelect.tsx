@@ -8,7 +8,7 @@ type Option = {
 type InputSelectProps = {
   text: string
   value: string | number
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
+  onChange?: (value: string) => void
   color?: string
   options?: Option[] | null
 }
@@ -23,13 +23,13 @@ const InputSelect = ({
   return (
     <div className={styles.input_card} style={{ backgroundColor: color }}>
       <select 
-        value={value} 
-        onChange={onChange} 
+        value={value}
+        onChange={(e) => onChange?.(e.target.value)}
         style={{ backgroundColor: color }}
         required
       >
         <option value="" disabled>{text}</option>
-        {options && options.map((opt, idx) => (
+        {options?.map((opt, idx) => (
           <option key={idx} value={opt.value}>
             {opt.label}
           </option>

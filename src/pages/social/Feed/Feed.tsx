@@ -4,7 +4,7 @@ import CreatePost from "../../../components/CreatePost/CreatePost"
 const Feed = () => {
   return (
     <main>
-      <CreatePost />
+      <CreatePost type={0} />
       <div className={styles.post}>1</div>
       <div className={styles.post}>2</div>
       <div className={styles.post}>3</div>

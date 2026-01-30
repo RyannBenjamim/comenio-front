@@ -1,0 +1,86 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 16px;
+
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  background-color: var(--color-hover-card-post);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.community_name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-strong);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background-color: var(--color-primary-light);
+  color: var(--color-tag-text);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.badge i {
+  font-size: 0.85rem;
+  color: var(--color-icon);
+}
+
+.badge strong {
+  font-weight: 700;
+  color: var(--color-text-strong);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.professor {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.footer {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+
+  font-size: 0.85rem;
+  color: var(--color-icon);
+}
+
+.card:hover .footer {
+  color: var(--color-icon-hover);
+}

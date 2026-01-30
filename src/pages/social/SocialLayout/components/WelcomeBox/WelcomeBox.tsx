@@ -4,7 +4,7 @@ import { findOne } from '../../../../../api/usuarios/usuarios.service';
 import { useEffect, useState } from 'react';
 import type { Usuario } from '../../../../../types/usuarios';
 import Loader from '../../../../../components/Loader/Loader';
-import { useUserAvatar } from '../../../../../hooks/useUserAvatar';
+import { useImageLoader } from '../../../../../hooks/useImageLoader';
 
 const WelcomeBox = () => {
   const { user: authUser } = useAuth();
@@ -18,7 +18,10 @@ const WelcomeBox = () => {
       .finally(() => setLoadingUser(false));
   }, [authUser]);
 
-  const { profileImg, loadingImg } = useUserAvatar(usuario?.fotoPerfilUrl);
+  const { 
+    img: profileImg, 
+    loadingImg: loadingProfileImg 
+  } = useImageLoader(usuario?.fotoPerfilUrl);
 
   if (loadingUser) {
     return (
@@ -33,7 +36,7 @@ const WelcomeBox = () => {
       <div className={styles.wb_header}></div>
 
       <div className={styles.wb_picture}>
-        {loadingImg ? (
+        {loadingProfileImg ? (
           <Loader />
         ) : (
           <div

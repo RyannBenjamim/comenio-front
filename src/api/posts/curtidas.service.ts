@@ -2,11 +2,11 @@ import type { Curtida, CurtidaDto } from "../../types/curtidas";
 import { genericRequest } from "../../utils/genericRequest";
 
 export function like(data: CurtidaDto) {
-  return genericRequest('/api/posts/curtidas/like', 'POST', data);
+  return genericRequest('/api/curtidas/like', 'POST', data);
 }
 
 export function unlike(data: CurtidaDto) {
-  return genericRequest('/api/posts/curtidas/unlike', 'POST', data);
+  return genericRequest('/api/curtidas/unlike', 'POST', data);
 }
 
 export function getLikes(postId?: string, respostaId?: string) {
@@ -16,7 +16,7 @@ export function getLikes(postId?: string, respostaId?: string) {
   if (respostaId) params.append('respostaId', respostaId);
 
   const query = params.toString();
-  const url = query ? `/api/posts/curtidas?${query}` : '/api/posts/curtidas';
+  const url = query ? `/api/curtidas?${query}` : '/api/curtidas';
 
   return genericRequest<{ likes: Curtida[]; totalLikes: number }>(url, 'GET');
 }

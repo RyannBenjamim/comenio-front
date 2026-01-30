@@ -4,10 +4,12 @@ import styles from './styles.module.css'
 import { findOne } from '../../api/usuarios/usuarios.service';
 import type { Usuario } from '../../types/usuarios';
 import { useAuth } from '../../hooks/useAuth';
-import { useUserAvatar } from '../../hooks/useUserAvatar';
+import { useImageLoader } from '../../hooks/useImageLoader';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { getStudentCommunities } from '../../api/comunidades.service';
+import { create } from '../../api/posts/posts.service';
+import { useNavigate } from 'react-router-dom';
 
 interface CreatePostProps {
   author?: string
@@ -25,6 +27,13 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null); 
   const [inputOptions, setInputOptions] = useState<Option[] | null>(null);
 
+  const [conteudo, setConteudo] = useState('');
+  const [selectedCommunity, setSelectedCommunity] = useState<number | string>(0);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (!authUser) return;
     findOne(authUser.id)
@@ -41,9 +50,40 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
       })
     );
     setInputOptions(options)
-  }, [])
+  }, []);
 
-  const { profileImg, loadingImg } = useUserAvatar(usuario?.fotoPerfilUrl);
+  const handleSubmit = async () => {
+    if (!authUser) return;
+    if (!conteudo.trim()) return;
+
+    setLoading(true);
+
+    try {
+      const data = {
+        conteudo,
+        image: imageFile ?? undefined,
+        feedId: selectedCommunity === 0 ? '0' : undefined,
+        comunidadeId: selectedCommunity !== 0 ? String(selectedCommunity) : undefined,
+      };
+
+      await create(data);
+
+      setConteudo('');
+      setSelectedImage(null);
+      setImageFile(null);
+      navigate(`/comunidades/${selectedCommunity}`);
+      setSelectedCommunity(0);
+    } catch (error) {
+      console.error('Erro ao criar post', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const { 
+    img: profileImg, 
+    loadingImg: loadingProfileImg 
+  } = useImageLoader(usuario?.fotoPerfilUrl);
 
   const handleAutoSize = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.target.style.height = "auto";
@@ -53,11 +93,15 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      setImageFile(file);
       setSelectedImage(URL.createObjectURL(file));
     }
   };
 
-  const closePreviewImage = () => setSelectedImage(null);
+  const closePreviewImage = () => {
+    setSelectedImage(null);
+    setImageFile(null);
+  };
 
   const buttonText = type === 0 ? 'Postar' : 'Responder';
   const placeholderText = type === 0 ? 'Comece uma publicação' : 'Postar sua resposta';
@@ -72,7 +116,7 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
 
       <div className={styles.line01}>
         <div className={styles.profile_picture}>
-          {loadingImg ? (
+          {loadingProfileImg ? (
             <Loader />
           ) : (
             <div
@@ -85,6 +129,8 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
           className={styles.input_text}
           placeholder={placeholderText}
           rows={1}
+          value={conteudo}
+          onChange={(e) => setConteudo(e.target.value)}
           onInput={handleAutoSize}
         />
       </div>
@@ -120,13 +166,21 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
               <InputSelect 
                 color="var(--color-background)"
                 text="Adicionar comunidade"
-                value={0}
-                onChange={() => {}}
+                value={selectedCommunity}
+                onChange={(value) => setSelectedCommunity(value)}
                 options={inputOptions}
               />
             </div>
           }
-          <button className={styles.post_btn}>{buttonText}</button>
+          
+          <button 
+            className={styles.post_btn}
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {loading ? 'Publicando...' : buttonText}
+          </button>
+
         </div>
       </div>
     </div>

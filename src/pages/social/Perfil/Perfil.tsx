@@ -1,32 +1,41 @@
 import styles from './styles/styles.module.css'
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import Header from './components/HeaderProfile/HeaderProfile';
-import { useState } from 'react';
+import { redirect } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 const Perfil = () => {
-  const [activeTab, setActiveTab] = useState("posts")
+  const { nickname } = useParams<{ nickname: string }>();
+  const [activeTab, setActiveTab] = useState("midias")
+
+  const isMyProfile = nickname ? false : true;
+
+  useEffect(() => {
+    redirect('/perfil')
+  }, [])
 
   return (
     <>
       <Header />
 
       <main className={styles.perfil_main}>
+         ------ resolver bug do f5 ------
         <div className={styles.perfil_tabs}>
           <Link
-            to='/perfil'
+            to={isMyProfile ? '/perfil' : `/perfil/${nickname}`}
+            className={`${styles.tab_btn} ${activeTab === "midias" ? styles.active : ""}`}
+            onClick={() => setActiveTab("midias")}
+          >
+            Midias
+          </Link>
+
+          <Link
+            to='posts'
             className={`${styles.tab_btn} ${activeTab === "posts" ? styles.active : ""}`}
             onClick={() => setActiveTab("posts")}
           >
             Posts
-          </Link>
-
-          <Link
-            to='comunidades'
-            className={`${styles.tab_btn} ${activeTab === "comunidades" ? styles.active : ""}`}
-            onClick={() => setActiveTab("comunidades")}
-          >
-            Comunidades
           </Link>
 
           <Link

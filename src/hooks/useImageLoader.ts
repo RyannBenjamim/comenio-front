@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-export function useUserAvatar(imgUrl?: string) {
-  const [profileImg, setProfileImg] = useState<string | null>(null);
-  const [loadingImg, setLoadingImg] = useState(!!imgUrl); 
+export function useImageLoader(imgUrl?: string) {
+  const [img, setImg] = useState<string | null>(null);
+  const [loadingImg, setLoadingImg] = useState(false);
 
   useEffect(() => {
     if (!imgUrl) {
-      setProfileImg(null);
+      setImg(null);
       setLoadingImg(false);
       return;
     }
@@ -14,17 +14,18 @@ export function useUserAvatar(imgUrl?: string) {
     let isMounted = true;
     setLoadingImg(true);
 
-    const img = new Image();
-    img.src = imgUrl;
+    const image = new Image();
+    image.src = imgUrl;
 
-    img.onload = () => {
+    image.onload = () => {
       if (!isMounted) return;
-      setProfileImg(imgUrl);
+      setImg(imgUrl);
       setLoadingImg(false);
     };
 
-    img.onerror = () => {
+    image.onerror = () => {
       if (!isMounted) return;
+      setImg(null);
       setLoadingImg(false);
     };
 
@@ -33,6 +34,6 @@ export function useUserAvatar(imgUrl?: string) {
     };
   }, [imgUrl]);
 
-  return { profileImg, loadingImg };
+  return { img, loadingImg };
 }
 

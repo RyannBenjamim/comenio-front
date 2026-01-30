@@ -1,4 +1,4 @@
-import type { Usuario, CreateUsuario, UpdateUsuario } from "../../types/usuarios";
+import { type Usuario, type CreateUsuario, type UpdateUsuario, type MyProfile } from "../../types/usuarios";
 import type { ApiResponse } from "../../types/ApiResponse";
 import { genericRequest } from "../../utils/genericRequest";
 
@@ -18,10 +18,10 @@ export function update(id: string, data: UpdateUsuario) {
   return genericRequest<ApiResponse<Usuario>>(`/api/usuarios/${id}`, 'PATCH', data);
 }
 
-export function deleteMyAccount() {
-  return genericRequest<ApiResponse<Usuario>>('/api/usuarios/me', 'DELETE');
+export function getMyProfile() {
+  return genericRequest<ApiResponse<MyProfile>>('/api/usuarios/perfil', 'GET');
 }
 
-export function getProfilePicture(id: string) {
-  return genericRequest<ApiResponse<{ url: string }>>(`/api/usuarios/${id}/foto-perfil`, 'GET');
+export function getProfileByNickname(nickname: string) {
+  return genericRequest<ApiResponse<MyProfile>>(`/api/usuarios/perfil/${nickname}`, 'GET');
 }

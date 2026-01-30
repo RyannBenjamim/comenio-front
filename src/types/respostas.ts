@@ -1,3 +1,10 @@
+import type { Usuario } from './usuarios';
+
+export type User = Pick<
+  Usuario,
+  'primeiroNome' | 'nickname' | 'fotoPerfilUrl'
+>;
+
 export interface Resposta {
   id: string;
   conteudo: string;
@@ -6,6 +13,7 @@ export interface Resposta {
   respostaId: string | null;
   createdAt: string;
   updatedAt: string;
+  user: User
 }
 
 export interface CreateResposta {

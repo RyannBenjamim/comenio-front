@@ -1,24 +1,50 @@
 import styles from './styles.module.css'
 import Loader from "../../../../../components/Loader/Loader"
-import { findOne } from '../../../../../api/usuarios/usuarios.service';
+import { getMyProfile, getProfileByNickname } from '../../../../../api/usuarios/usuarios.service';
 import { useEffect, useState } from 'react';
-import type { Usuario } from '../../../../../types/usuarios';
+import type { MyProfile } from '../../../../../types/usuarios';
 import { useAuth } from '../../../../../hooks/useAuth';
-import { useUserAvatar } from '../../../../../hooks/useUserAvatar';
+import { useImageLoader } from '../../../../../hooks/useImageLoader';
+import { useParams } from 'react-router-dom';
 
 const HeaderProfile = () => {
+  const { nickname } = useParams<{ nickname: string }>();
   const { user: authUser } = useAuth();
-  const [usuario, setUsuario] = useState<Usuario | null>(null);
+  const [usuario, setUsuario] = useState<MyProfile | null>(null);
   const [loadingUser, setLoadingUser] = useState(true);
   
   useEffect(() => {
     if (!authUser) return;
-    findOne(authUser.id)
-      .then(res => setUsuario(res.data))
-      .finally(() => setLoadingUser(false));
-  }, [authUser]);
 
-  const { profileImg, loadingImg } = useUserAvatar(usuario?.fotoPerfilUrl);
+    const loadProfile = async () => {
+      try {
+        setLoadingUser(true);
+
+        if (nickname) {
+          const res = await getProfileByNickname(nickname);
+          console.log(res.data)
+          setUsuario(res.data);
+        } else {
+          const res = await getMyProfile();
+          console.log(res.data)
+          setUsuario(res.data);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar o perfil', error);
+      } finally {
+        setLoadingUser(false);
+      }
+    };
+
+    loadProfile();
+  }, [authUser, nickname]);
+
+  const { 
+      img: profileImg, 
+      loadingImg: loadingProfileImg 
+    } = useImageLoader(usuario?.fotoPerfilUrl);
+
+  const isMyProfile = nickname ? false : true;
 
   if (loadingUser) {
     return (
@@ -32,7 +58,7 @@ const HeaderProfile = () => {
 
       <div className={styles.header_main}>
         <div className={styles.profile_picture}>
-          {loadingImg ? (
+          {loadingProfileImg ? (
             <Loader />
           ) : (
             <div
@@ -44,19 +70,20 @@ const HeaderProfile = () => {
           )}
         </div>
 
-        <button className={styles.edit_profile_btn}>Editar perfil</button>
+        {isMyProfile 
+          ? <button className={styles.edit_profile_btn}>Editar perfil</button> 
+          : <button className={styles.fantasma_btn}>botão fantasma</button>
+        }
       </div>
 
       <p className={styles.nickname}>{usuario?.primeiroNome} {usuario?.sobrenome}</p>
       <p className={styles.username}>@{usuario?.nickname}</p>
 
-      <p className={styles.bio_text}>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      </p>
+      <p className={styles.bio_text}>{usuario?.bio}</p>
 
       <div className={styles.class_text}>
         <i className="fa-solid fa-users"></i>
-        <p>1º ano A</p>
+        <p>{usuario?.aluno?.turma?.titulo}</p>
       </div>
     </header>
   )

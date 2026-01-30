@@ -41,16 +41,16 @@ const LeftAside = () => {
 
       <div className={styles.la_02}>
         {comunitities ? comunitities.map((comunititie, index) => (
-          <div className={styles.card_link} key={index}>
+          <Link className={styles.card_link} key={index} to={`/comunidades/${comunititie.id}`}>
             <i className="fa-solid fa-users"></i>
             <p>{comunititie.titulo}</p>
-          </div>
+          </Link>
         )): null} 
         {comunitities && comunitities?.length >= 4 ? 
-          <div className={styles.card_link}>
+          <Link className={styles.card_link} to='/comunidades'>
             <i className="fa-solid fa-users"></i>
             <p>Ver todas...</p>
-          </div> : null
+          </Link> : null
         }
       </div>
     </aside>

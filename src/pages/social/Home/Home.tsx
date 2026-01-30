@@ -1,16 +1,79 @@
-import CardPost from '../../../components/CardPost/CardPost'
+import { useEffect, useState } from 'react'
 import CreatePost from '../../../components/CreatePost/CreatePost'
+import CardPost from '../../../components/CardPost/CardPost'
+
+import { findAllMergedPosts } from '../../../api/posts/posts.service'
+import type { Post } from '../../../types/posts'
+
 import styles from './styles.module.css'
+import InfoBox from '../../../components/InfoBox/InfoBox'
+import CardPostSkeleton from '../../../components/CardPostSkeleton/CardPostSkeleton'
+import { preloadImages } from '../../../utils/preloadImages'
 
 const Home = () => {
+  const [posts, setPosts] = useState<Post[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setLoading(true);
+
+    async function loadPosts() {
+      try {
+        const response = await findAllMergedPosts();
+        const postsData = response.data;
+
+        const imageUrls = postsData
+          .map(post => post.fotoUrl)
+          .filter(Boolean) as string[];
+
+        await preloadImages(imageUrls);
+
+        setPosts(postsData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Erro ao buscar posts', error);
+        setLoading(false);
+      }
+    }
+
+    loadPosts();
+  }, []);
+
   return (
     <main className={styles.container}>
       <CreatePost type={0} />
-      <CardPost type={0} img='https://images.unsplash.com/photo-1609155035300-15e1ffa95f12?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
-      <CardPost type={0} img='https://images.unsplash.com/photo-1676302447092-14a103558511?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
-      <CardPost type={0} />
-      <CardPost type={0} img='https://images.unsplash.com/photo-1758685848095-249ad965f4f3?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
-      <CardPost type={0} img='https://images.unsplash.com/photo-1648201188793-418f2b9b4b32?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' />
+
+      <div className={styles.posts}>
+        {loading && 
+          Array.from({ length: 5 }).map((_, index) => (
+            <CardPostSkeleton key={index} />
+          ))
+        }
+
+        {!loading && posts.length === 0 && (
+          <InfoBox 
+            icon='fa-solid fa-question'
+            title='Ainda está quieto por aqui 👀'
+            subtitle='Que tal iniciar a primeira discussão e movimentar a turma?'
+          />
+        )}
+
+        {!loading &&
+          posts.map(post => (
+            <CardPost
+              key={post.id}
+              id={post.id}
+              conteudo={post.conteudo}
+              img={post.fotoUrl ?? undefined}
+              createdAt={post.createdAt}
+              user={post.user}
+              comunidade={post.comunidade}
+              type={0}
+              link={`/posts/${post.id}`}
+            />
+          ))
+        }
+      </div>
     </main>
   )
 }

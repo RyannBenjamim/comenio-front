@@ -28,7 +28,7 @@ header {
 
 .header_02 .content .search_box {
   position: absolute;
-  margin-left: 260px;
+  margin-left: 264px;
   display: flex;
   align-items: center;
   gap: 10px;
