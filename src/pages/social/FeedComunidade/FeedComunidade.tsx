@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import CreatePost from '../../../components/CreatePost/CreatePost'
+import CreateContent from '../../../components/CreateContent/CreateContent'
 import CardPost from '../../../components/CardPost/CardPost'
 
 import { findAll } from '../../../api/posts/posts.service'
@@ -46,7 +46,7 @@ const FeedComunidade = () => {
 
   return (
     <main className={styles.container}>
-      <CreatePost type={0} />
+      <CreateContent type='post' />
 
       <div className={styles.posts}>
         {loading && 

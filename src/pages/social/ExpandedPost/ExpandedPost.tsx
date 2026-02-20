@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
 import CardPost from '../../../components/CardPost/CardPost'
-import CreatePost from '../../../components/CreatePost/CreatePost'
 import styles from './styles.module.css'
 import { Link, useParams } from 'react-router-dom'
 import { findOne } from '../../../api/posts/posts.service'
 import { findAll } from '../../../api/posts/respostas.service'
 import type { Post } from '../../../types/posts'
 import type { Resposta } from '../../../types/respostas'
+import CreateContent from '../../../components/CreateContent/CreateContent'
 
 const ExpandedPost = () => {
+  const { username } = useParams<{ username: string }>();
   const { post_id } = useParams<{ post_id: string }>();
   const [post, setPost] = useState<Post | null>(null);
   const [respostas, setRespostas] = useState<Resposta[]>([]);
@@ -51,7 +52,7 @@ const ExpandedPost = () => {
         <p>
           Comentários do post de{' '}
           <Link className={styles.author_name} to="">
-            @{post.user.nickname}
+            @{username}
           </Link>
         </p>
       </div>
@@ -63,11 +64,16 @@ const ExpandedPost = () => {
         img={post.fotoUrl ?? undefined}
         createdAt={post.createdAt}
         user={post.user}
+        comunidade={post.comunidade}
         type={1}
         link={`/posts/${post.id}`}
       />
 
-      <CreatePost author={post.user.nickname} type={1} />
+      <CreateContent 
+        author={username} 
+        postId={post_id}
+        type='resposta' 
+      />
 
       <div className={styles.comments}>
         {respostas.map(resposta => (
@@ -75,9 +81,10 @@ const ExpandedPost = () => {
             key={resposta.id}
             id={resposta.id}
             conteudo={resposta.conteudo}
-            img={undefined}
+            img={resposta.fotoUrl ?? undefined}
             createdAt={resposta.createdAt}
-            user={resposta.user}
+            user={resposta.autor}
+            comunidade={resposta.contexto.comunidade}
             type={0}
             author={post.user.nickname}
             link={`/comment/${resposta.id}`}

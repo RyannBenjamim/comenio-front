@@ -1,6 +1,7 @@
 import styles from './styles.module.css'
 import { Link } from 'react-router-dom'
 import type { ComunidadeIdTitulo, User } from '../../types/posts'
+import type { RespostaAutor, RespostaComunidade } from '../../types/respostas'
 import { formatPostDate } from '../../utils/formatPostDate'
 import { useImageLoader } from '../../hooks/useImageLoader'
 import Loader from '../Loader/Loader'
@@ -10,8 +11,8 @@ interface CardPostProps {
   conteudo: string
   img?: string
   createdAt: string
-  user: User
-  comunidade: ComunidadeIdTitulo
+  user: User | RespostaAutor
+  comunidade: ComunidadeIdTitulo | RespostaComunidade
 
   type: number, // 0 -> normal post | 1 expanded post
   comment?: boolean // true -> is a comment

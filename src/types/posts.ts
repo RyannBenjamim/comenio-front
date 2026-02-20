@@ -20,7 +20,6 @@ export type FeedIdTitulo = Pick<
 export interface Post {
   id: string;
   conteudo: string;
-  fotoCaminho: string | null;
   fotoUrl: string | null;
   userId: string;
   feedId: string | null;

@@ -1,9 +1,39 @@
 import type { ApiResponse } from "../../types/ApiResponse";
-import type { Resposta, CreateResposta, UpdateResposta } from "../../types/respostas";
+import type { 
+  Resposta, 
+  CreateRespostaWithFile, 
+  UpdateResposta 
+} from "../../types/respostas";
 import { genericRequest } from "../../utils/genericRequest";
 
-export function create(data: CreateResposta) {
-  return genericRequest<ApiResponse<Resposta[]>>('/api/respostas', 'POST', data);
+export function create(data: CreateRespostaWithFile) {
+  if (!data.image) {
+    return genericRequest<ApiResponse<Resposta>>(
+      "/api/respostas",
+      "POST",
+      data
+    );
+  }
+
+  const formData = new FormData();
+
+  formData.append("conteudo", data.conteudo);
+
+  if (data.postId) {
+    formData.append("postId", data.postId);
+  }
+
+  if (data.respostaId) {
+    formData.append("respostaId", data.respostaId);
+  }
+
+  formData.append("foto", data.image);
+
+  return genericRequest<ApiResponse<Resposta>>(
+    "/api/respostas",
+    "POST",
+    formData
+  );
 }
 
 export function findAll(postId?: string, respostaId?: string) {
@@ -16,6 +46,10 @@ export function findAll(postId?: string, respostaId?: string) {
   const url = query ? `/api/respostas?${query}` : '/api/respostas';
 
   return genericRequest<ApiResponse<Resposta[]>>(url, 'GET');
+}
+
+export function findAllByUserId() {
+  return genericRequest<ApiResponse<Resposta[]>>('/api/respostas/me', 'GET');
 }
 
 export function findOne(id: string) {

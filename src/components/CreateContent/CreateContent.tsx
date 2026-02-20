@@ -8,12 +8,17 @@ import { useImageLoader } from '../../hooks/useImageLoader';
 import Loader from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { getStudentCommunities } from '../../api/comunidades.service';
-import { create } from '../../api/posts/posts.service';
+import { create as createPost } from '../../api/posts/posts.service';
+import { create as createResposta } from '../../api/posts/respostas.service';
 import { useNavigate } from 'react-router-dom';
 
+type CreateContentType = 'post' | 'resposta';
+
 interface CreatePostProps {
+  type: CreateContentType
   author?: string
-  type: number // 0 -> Post | 1 -> Comment | 2 -> answer
+  postId?: string
+  respostaId?: string
 }
 
 interface Option {
@@ -21,7 +26,12 @@ interface Option {
   label: string
 }
 
-const CreatePost = ({ author, type }: CreatePostProps) => {
+const CreateContent = ({ 
+  type, 
+  author, 
+  postId, 
+  respostaId,
+}: CreatePostProps) => {
   const { user: authUser } = useAuth();
   const [usuario, setUsuario] = useState<Usuario | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null); 
@@ -52,33 +62,60 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
     setInputOptions(options)
   }, []);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     if (!authUser) return;
     if (!conteudo.trim()) return;
 
     setLoading(true);
 
     try {
-      const data = {
-        conteudo,
-        image: imageFile ?? undefined,
-        feedId: selectedCommunity === 0 ? '0' : undefined,
-        comunidadeId: selectedCommunity !== 0 ? String(selectedCommunity) : undefined,
-      };
-
-      await create(data);
-
-      setConteudo('');
-      setSelectedImage(null);
-      setImageFile(null);
-      navigate(`/comunidades/${selectedCommunity}`);
-      setSelectedCommunity(0);
+      if (type === 'post') {
+        await savePost();
+      } else {
+        await saveResposta();
+      }
     } catch (error) {
       console.error('Erro ao criar post', error);
     } finally {
       setLoading(false);
     }
   };
+
+  const savePost = async () => {
+    const data = {
+      conteudo,
+      image: imageFile ?? undefined,
+      feedId: selectedCommunity === 0 ? '0' : undefined,
+      comunidadeId: selectedCommunity !== 0 ? String(selectedCommunity) : undefined,
+    };
+
+    await createPost(data);
+
+    setConteudo('');
+    setSelectedImage(null);
+    setImageFile(null);
+    navigate(`/comunidades/${selectedCommunity}`);
+    setSelectedCommunity(0);
+  }
+
+  const saveResposta = async () => {
+    const data = {
+      conteudo,
+      image: imageFile ?? undefined,
+      postId: postId ?? undefined,
+      respostaId: respostaId ?? undefined
+    };
+
+    await createResposta(data);
+
+    setConteudo('');
+    setSelectedImage(null);
+    setImageFile(null);
+    navigate(`/${author}/posts/${postId}`);
+    setSelectedCommunity(0);
+  }
 
   const { 
     img: profileImg, 
@@ -103,11 +140,11 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
     setImageFile(null);
   };
 
-  const buttonText = type === 0 ? 'Postar' : 'Responder';
-  const placeholderText = type === 0 ? 'Comece uma publicação' : 'Postar sua resposta';
+  const buttonText = type === 'post' ? 'Postar' : 'Responder';
+  const placeholderText = type === 'post' ? 'Comece uma publicação' : 'Postar sua resposta';
 
   return (
-    <div className={styles.create_post_box}>
+    <form className={styles.create_post_box} onSubmit={handleSubmit}>
       {author &&
         <p className={styles.author_text}>
           Respondendo a <Link className={styles.author_name} to='/perfil'>@{author}</Link>
@@ -161,7 +198,7 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
         </div>
 
         <div className={styles.input_post}>
-          {type === 0 &&
+          {type === 'post' &&
             <div className={styles.input_comunititie}>
               <InputSelect 
                 color="var(--color-background)"
@@ -175,7 +212,6 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
           
           <button 
             className={styles.post_btn}
-            onClick={handleSubmit}
             disabled={loading}
           >
             {loading ? 'Publicando...' : buttonText}
@@ -183,8 +219,8 @@ const CreatePost = ({ author, type }: CreatePostProps) => {
 
         </div>
       </div>
-    </div>
+    </form>
   )
 }
 
-export default CreatePost
+export default CreateContent

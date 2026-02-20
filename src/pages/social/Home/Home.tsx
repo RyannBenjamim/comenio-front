@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import CreatePost from '../../../components/CreatePost/CreatePost'
+import CreateContent from '../../../components/CreateContent/CreateContent'
 import CardPost from '../../../components/CardPost/CardPost'
 
 import { findAllMergedPosts } from '../../../api/posts/posts.service'
@@ -41,7 +41,7 @@ const Home = () => {
 
   return (
     <main className={styles.container}>
-      <CreatePost type={0} />
+      <CreateContent type='post' />
 
       <div className={styles.posts}>
         {loading && 

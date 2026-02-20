@@ -1,10 +1,10 @@
 import styles from './styles.module.css'
-import CreatePost from "../../../components/CreatePost/CreatePost"
+import CreateContent from "../../../components/CreateContent/CreateContent"
 
 const Feed = () => {
   return (
     <main>
-      <CreatePost type={0} />
+      <CreateContent type='post' />
       <div className={styles.post}>1</div>
       <div className={styles.post}>2</div>
       <div className={styles.post}>3</div>
