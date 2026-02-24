@@ -182,3 +182,67 @@
 .post_btn:hover {
   background: var(--color-primary-light);
 }
+
+@media (max-width: 1366px) {
+  .create_post_box {
+    padding: 12px 14px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  .line01 {
+    gap: 12px;
+  }
+
+  .profile_picture {
+    width: 32px;
+    height: 32px;
+  }
+
+  .input_text {
+    font-size: 16px;
+    line-height: 1.35;
+    min-height: 24px;
+  }
+
+  .author_text {
+    font-size: 13px;
+  }
+
+  .image_preview {
+    border-radius: 12px;
+  }
+
+  .image_preview img {
+    border-radius: 12px;
+  }
+
+  .image_preview .close_preview_btn {
+    width: 26px;
+    height: 26px;
+    top: 6px;
+    right: 6px;
+  }
+
+  .image_preview .close_preview_btn i {
+    font-size: 14px;
+  }
+
+  .line02 {
+    padding-top: 10px;
+    gap: 10px;
+  }
+
+  .uploud_icon {
+    padding: 8px 10px;
+  }
+
+  .uploud_icon i {
+    font-size: 14px;
+  }
+
+  .post_btn {
+    padding: 8px 32px;
+    font-size: 14px;
+  }
+}

@@ -184,3 +184,72 @@
   width: auto;
   font-weight: 400;
 }
+
+@media (max-width: 1366px) {
+  .ranking_box {
+    padding: 14px;
+  }
+
+  .title {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .tabs {
+    margin-bottom: 20px;
+  }
+
+  .tab_btn {
+    padding: 8px 0;
+    font-size: 11px;
+  }
+
+  .top3_box {
+    margin-bottom: 16px;
+  }
+
+  .top3_item:nth-child(2) {
+    transform: translateY(-6px);
+  }
+
+  .profile_picture_t3 {
+    width: 36px;
+    height: 36px;
+  }
+
+  .position_t3 {
+    width: 16px;
+    height: 16px;
+    font-size: 0.65rem;
+    bottom: 26px;
+  }
+
+  .username_t3,
+  .points_t3 {
+    font-size: 0.65rem;
+  }
+
+  .afterTheTop3_box {
+    max-height: 240px;
+    overflow-y: auto;
+  }
+
+  .ranking_card {
+    padding: 6px;
+  }
+
+  .profile_picture {
+    width: 26px;
+    height: 26px;
+  }
+
+  .username {
+    font-size: 0.65rem;
+  }
+
+  .points,
+  .position {
+    font-size: 0.7rem;
+  }
+
+}

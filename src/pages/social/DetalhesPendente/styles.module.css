@@ -90,6 +90,7 @@ small {
   text-decoration: none;
   font-weight: 500;
   transition: background 0.2s;
+  cursor: pointer;
 }
 
 .download:hover {
@@ -165,4 +166,101 @@ textarea::placeholder {
 
 .submit:hover {
   background: var(--color-primary-light);
+}
+
+@media (max-width: 1366px) {
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .cardHeader {
+    margin-bottom: 12px;
+  }
+
+  .cardHeader h2 {
+    font-size: 1.1rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .divider {
+    margin: 12px 0;
+  }
+
+  .descricao {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .field {
+    grid-template-columns: 130px 1fr;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  .field strong {
+    font-size: 0.8rem;
+  }
+
+  .field span {
+    font-size: 0.9rem;
+  }
+
+  .fieldForm {
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  small {
+    font-size: 11px;
+  }
+
+  .download {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    gap: 6px;
+  }
+
+  .form {
+    gap: 16px;
+  }
+
+  .fileInput {
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  textarea {
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .actions {
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .cancel {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
+
+  .submit {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
 }

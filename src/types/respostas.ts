@@ -4,6 +4,12 @@ export interface RespostaAutor {
   fotoPerfilUrl: string;
 }
 
+export const RespostaAutorDefault = {
+  primeiroNome: 'Desconhecido',
+  nickname: 'Desconhecido',
+  fotoPerfilUrl: null,
+}
+
 export interface RespostaUsuarioReferencia {
   id: string;
   nickname: string;
@@ -17,6 +23,11 @@ export interface RespostaContextoItem {
 export interface RespostaComunidade {
   id: string;
   titulo: string;
+}
+
+export const RespostaComunidadeDefault = {
+  id: '0',
+  titulo: 'Desconhecida'
 }
 
 export interface RespostaFeed {

@@ -99,3 +99,39 @@
   width: fit-content;
   margin: 0 auto;
 }
+
+@media (max-width: 1366px) {
+  .welcome_box,
+  .welcome_loader {
+    height: 210px;
+  }
+
+  .welcome_box .wb_header {
+    height: 64px;
+  }
+
+  .welcome_box .wb_picture {
+    top: 34px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .welcome_box .wb_text {
+    margin-top: 42px;
+  }
+
+  .welcome_box .wb_text .text01 {
+    font-size: 12px;
+  }
+
+  .welcome_box .wb_text .text02 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .welcome_box .wb_text .cargo {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+}

@@ -14,14 +14,14 @@
   border: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1366px) {
   .input_card {
-    padding: 0px 10px;
-    border-radius: 4px;
+    padding: 0 12px;
+    border-radius: 5px;
   }
 
   .input_card select {
-    padding: 10px 0px;
-    font-size: 14px;
+    padding: 8px 0;
+    font-size: 0.9rem;
   }
 }

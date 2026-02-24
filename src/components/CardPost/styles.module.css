@@ -200,3 +200,69 @@
 .total_comments {
   font-size: 14px;
 }
+
+@media (max-width: 1366px) {
+  .card {
+    padding: 12px 14px 10px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .profile_picture {
+    width: 36px;
+    height: 36px;
+  }
+
+  .username {
+    font-size: 14px;
+  }
+
+  .infos p,
+  .author_text,
+  .time_details {
+    font-size: 13px;
+  }
+
+  .community_badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .community_badge i {
+    font-size: 9px;
+  }
+
+  .text_content {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .media {
+    border-radius: 12px;
+  }
+
+  .post_picture {
+    max-height: 460px;
+  }
+
+  .action_btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .line02 {
+    gap: 18px;
+  }
+
+  .like,
+  .comment,
+  .total_likes,
+  .total_comments {
+    font-size: 13px;
+  }
+
+  .like i,
+  .comment i {
+    font-size: 16px;
+  }
+}

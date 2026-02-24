@@ -163,14 +163,64 @@
   background-color: var(--color-primary-light);
 }
 
-@media (min-width: 600px) {
-  .password_box {
-    flex-direction: row;
-    gap: 30px;
+@media (max-width: 1366px) {
+  .main_config {
+    padding: 16px;
+    border-radius: 12px;
   }
 
-  .password_box .input {
-    flex: 1;
+  .profile_picture_Box {
+    margin-bottom: 20px;
+  }
+
+  .profile_picture {
+    width: 100px;
+    height: 100px;
+  }
+
+  .uploud_icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .uploud_icon i {
+    font-size: 0.9rem;
+  }
+
+  .title {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .infosPerfil_form,
+  .password_form,
+  .password_box {
+    gap: 16px;
+  }
+
+  .input p,
+  .input_title {
+    font-size: 0.85rem;
+  }
+
+  .input input,
+  .input textarea {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .input textarea {
+    min-height: 100px;
+  }
+
+  .infosPerfil_form_btn,
+  .password_form_btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+
+  .diviser {
+    margin: 28px 0;
   }
 }
 

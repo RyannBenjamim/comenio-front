@@ -5,7 +5,11 @@ import { Link, useParams } from 'react-router-dom'
 import { findOne } from '../../../api/posts/posts.service'
 import { findAll } from '../../../api/posts/respostas.service'
 import type { Post } from '../../../types/posts'
-import type { Resposta } from '../../../types/respostas'
+import { 
+  RespostaAutorDefault, 
+  RespostaComunidadeDefault, 
+  type Resposta 
+} from '../../../types/respostas'
 import CreateContent from '../../../components/CreateContent/CreateContent'
 
 const ExpandedPost = () => {
@@ -13,6 +17,10 @@ const ExpandedPost = () => {
   const { post_id } = useParams<{ post_id: string }>();
   const [post, setPost] = useState<Post | null>(null);
   const [respostas, setRespostas] = useState<Resposta[]>([]);
+  
+  const handleNovaResposta = (resposta: Resposta) => {
+    setRespostas(prev => [resposta, ...prev]); 
+  };
 
   useEffect(() => {
     if (!post_id) return;
@@ -39,7 +47,7 @@ const ExpandedPost = () => {
 
     loadPost();
     loadRespostas();
-  }, [post_id])
+  }, [post_id, respostas])
 
   if (!post) {
     return <div className={styles.container}>Carregando...</div>
@@ -73,6 +81,7 @@ const ExpandedPost = () => {
         author={username} 
         postId={post_id}
         type='resposta' 
+        onCreated={handleNovaResposta}
       />
 
       <div className={styles.comments}>
@@ -83,8 +92,8 @@ const ExpandedPost = () => {
             conteudo={resposta.conteudo}
             img={resposta.fotoUrl ?? undefined}
             createdAt={resposta.createdAt}
-            user={resposta.autor}
-            comunidade={resposta.contexto.comunidade}
+            user={resposta?.autor ?? RespostaAutorDefault}
+            comunidade={resposta.contexto?.comunidade ?? RespostaComunidadeDefault}
             type={0}
             author={post.user.nickname}
             link={`/comment/${resposta.id}`}

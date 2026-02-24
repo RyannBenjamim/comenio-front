@@ -88,3 +88,39 @@
 .card:hover .footer {
   color: var(--color-icon-hover);
 }
+
+@media (max-width: 1366px) {
+  .card {
+    padding: 14px;
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .title {
+    font-size: 0.95rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    gap: 4px;
+  }
+
+  .content {
+    gap: 3px;
+  }
+
+  .label {
+    font-size: 0.7rem;
+  }
+
+  .text,
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+}

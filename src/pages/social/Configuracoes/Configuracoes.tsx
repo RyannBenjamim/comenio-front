@@ -9,7 +9,7 @@ const Configuracoes = () => {
         <div className={styles.profile_picture_Box}>
           <div
             className={styles.profile_picture}
-            style={{ backgroundImage: `url(${'/images/minha-foto.jpg'})` }}
+            style={{ backgroundImage: `url(${'/images/avatar-default.png'})` }}
           ></div>
           <div className={styles.input_image_box}>
             <label htmlFor='img_input' className={styles.uploud_icon}>

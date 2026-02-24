@@ -67,3 +67,39 @@ body {
 .main_container .main_content .back_to_top p, i {
   color: var(--color-btn-text);
 }
+
+@media (max-width: 1366px) {
+  .global_container {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  body {
+    overflow-y: hidden;
+  }
+
+  .main_container {
+    max-width: 1000px;
+    gap: 12px;
+    margin: 15px auto;
+    height: calc(100vh - 24px - 70px - 16px);
+  }
+
+  .main_container .right_aside {
+    width: 220px;
+    gap: 12px;
+  }
+
+  .main_container .main_content {
+    width: 500px;
+    min-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  .main_container .main_content .back_to_top {
+    width: 180px;
+    height: 36px;
+    font-size: 13px;
+    gap: 8px;
+  }
+}

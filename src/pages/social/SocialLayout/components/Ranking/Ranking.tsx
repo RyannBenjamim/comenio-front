@@ -1,49 +1,68 @@
 import styles from './styles.module.css'
+import { useWindowHeight } from '../../../../../hooks/useWindowHeight';
 
-const ranking = [
+interface RankingItem {
+  username: string,
+  points: number,
+  url: string
+}
+
+const ranking: RankingItem[] = [
   {
     username: 'Ciclana',
     points: 550,
-    url: '/images/minha-foto.jpg'
+    url: '/images/avatar-default.png'
   },
   {
     username: 'Beltrano',
     points: 484,
-    url: '/images/minha-foto.jpg'
+    url: '/images/avatar-default.png'
   },
   {
     username: 'Fulano',
     points: 397,
-    url: '/images/minha-foto.jpg'
+    url: '/images/avatar-default.png'
   },
   {
     username: 'Mariana',
     points: 365,
-    url: '/images/minha-foto.jpg'
+    url: '/images/avatar-default.png'
   },
   {
     username: 'Aline',
     points: 318,
-    url: '/images/minha-foto.jpg'
+    url: '/images/avatar-default.png'
   },
   {
     username: 'Renato',
     points: 290,
-    url: '/images/minha-foto.jpg'
+    url: '/images/avatar-default.png'
   },
   {
     username: 'Bruna',
     points: 268,
-    url: '/images/minha-foto.jpg'
+    url: '/images/avatar-default.png'
   },
   {
     username: 'Thiago',
     points: 251,
-    url: '/images/minha-foto.jpg'
+    url: '/images/avatar-default.png'
   }
 ]
 
 const Ranking = () => {
+  const windowHeight = useWindowHeight();
+
+  const rankingItensSize = (rankingArray: RankingItem[]) => {
+    if (windowHeight <= 800) {
+      return rankingArray.slice(3)
+    } else if (windowHeight <= 880) {
+      return rankingArray.slice(2, 6);
+    } else {
+      return rankingArray.slice(3)
+    }
+  } 
+  
   return (
     <div className={styles.ranking_box }>
       <p className={styles.title}>Ranking</p>
@@ -87,7 +106,7 @@ const Ranking = () => {
       </div>
 
       <div className={styles.afterTheTop3_box}>
-        {ranking.slice(3).map((item, index) => (
+        {rankingItensSize(ranking).map((item, index) => (
           <div className={styles.ranking_card} key={index}>
             <div className={styles.infos}>
               <p className={styles.position}>{index + 4}</p>

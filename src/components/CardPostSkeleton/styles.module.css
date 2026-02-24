@@ -133,3 +133,60 @@
   height: 10px;
   border-radius: 50%;
 }
+
+@media (max-width: 1366px) {
+  .card,
+  .card_comment {
+    padding: 12px 14px 10px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .username,
+  .nickname,
+  .badge,
+  .time {
+    height: 12px;
+  }
+
+  .username,
+  .nickname {
+    width: 70px;
+  }
+
+  .badge {
+    width: 50px;
+  }
+
+  .time {
+    width: 35px;
+  }
+
+  .text {
+    height: 13px;
+  }
+
+  .picture {
+    height: 300px;
+    border-radius: 12px;
+  }
+
+  .line02 {
+    gap: 18px;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .number {
+    width: 8px;
+    height: 8px;
+  }
+}

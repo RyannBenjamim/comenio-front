@@ -62,8 +62,51 @@
   text-decoration: none;
   font-weight: 500;
   transition: background 0.2s;
+  cursor: pointer;
 }
 
 .download:hover {
   background: var(--color-primary);
+}
+
+@media (max-width: 1366px) {
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .divider {
+    margin: 12px 0;
+  }
+
+  .infoGrid {
+    grid-template-columns: 130px 1fr;
+    gap: 6px;
+  }
+
+  .infoGrid strong {
+    font-size: 0.8rem;
+  }
+
+  .infoGrid span {
+    font-size: 0.9rem;
+  }
+
+  .descricao {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .download {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    gap: 6px;
+  }
 }

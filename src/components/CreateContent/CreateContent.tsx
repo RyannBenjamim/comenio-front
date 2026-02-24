@@ -11,6 +11,7 @@ import { getStudentCommunities } from '../../api/comunidades.service';
 import { create as createPost } from '../../api/posts/posts.service';
 import { create as createResposta } from '../../api/posts/respostas.service';
 import { useNavigate } from 'react-router-dom';
+import type { Resposta } from '../../types/respostas';
 
 type CreateContentType = 'post' | 'resposta';
 
@@ -19,6 +20,7 @@ interface CreatePostProps {
   author?: string
   postId?: string
   respostaId?: string
+  onCreated?: (resposta: Resposta) => void
 }
 
 interface Option {
@@ -31,6 +33,7 @@ const CreateContent = ({
   author, 
   postId, 
   respostaId,
+  onCreated
 }: CreatePostProps) => {
   const { user: authUser } = useAuth();
   const [usuario, setUsuario] = useState<Usuario | null>(null);
@@ -108,12 +111,12 @@ const CreateContent = ({
       respostaId: respostaId ?? undefined
     };
 
-    await createResposta(data);
+    const response = await createResposta(data);
 
     setConteudo('');
     setSelectedImage(null);
     setImageFile(null);
-    navigate(`/${author}/posts/${postId}`);
+    onCreated?.(response.data);
     setSelectedCommunity(0);
   }
 

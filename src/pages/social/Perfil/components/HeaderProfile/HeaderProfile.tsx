@@ -79,7 +79,7 @@ const HeaderProfile = () => {
       <p className={styles.nickname}>{usuario?.primeiroNome} {usuario?.sobrenome}</p>
       <p className={styles.username}>@{usuario?.nickname}</p>
 
-      <p className={styles.bio_text}>{usuario?.bio}</p>
+      <p className={styles.bio_text}>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
 
       <div className={styles.class_text}>
         <i className="fa-solid fa-users"></i>

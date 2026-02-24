@@ -96,14 +96,36 @@
   opacity: 0.85;
 }
 
-@media (max-height: 700px) {
-  .container {
-    justify-content: flex-start;
-    padding-top: 40px;
+@media (max-width: 1366px) {
+  .container > img {
+    width: 150px;
+    margin-bottom: 24px;
+  }
+
+  .form_container {
+    max-width: 380px;
+    padding: 28px 26px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+  }
+
+  .form_container > p {
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+
+  .form_container form {
+    gap: 14px;
+  }
+
+  .form_container input {
+    height: 42px;
+    font-size: 13px;
   }
 
   .credits {
-    position: static;
-    margin-top: 32px;
+    bottom: 28px;
+    font-size: 12px;
   }
 }

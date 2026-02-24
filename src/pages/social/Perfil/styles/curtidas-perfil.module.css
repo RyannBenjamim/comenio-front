@@ -17,3 +17,16 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 1366px) {
+  main {
+    gap: 12px;
+    padding-bottom: 70px;
+  }
+
+  .post {
+    height: 320px;
+    border-width: 2px;
+    border-radius: 8px;
+  }
+}

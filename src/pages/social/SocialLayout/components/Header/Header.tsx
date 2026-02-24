@@ -18,7 +18,7 @@ const Header = () => {
       <div className={styles.header_02}>
         <div className={styles.content}>
           <img src={theme === 'light' ? logo : logoV2} alt="logo" className={styles.logo} />
-          <div className={styles.search_box}>
+          {/*<div className={styles.search_box}>
             <i className="fa-solid fa-magnifying-glass"></i>
             <input
               type="text"
@@ -26,7 +26,7 @@ const Header = () => {
               placeholder="Pesquise por tópicos e discussões"
               className={styles.input_search}
             />
-          </div>
+          </div>*/}
           <div className={styles.header_icons}>
             <div className={styles.logout_btn} onClick={() => {
               logout();

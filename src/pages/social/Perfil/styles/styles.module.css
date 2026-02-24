@@ -43,3 +43,23 @@
   color: var(--color-text-strong);
   border-bottom: 3px solid var(--color-text-muted);
 }
+
+@media (max-width: 1366px) {
+  .perfil_tabs {
+    margin-top: 6px;
+    border-radius: 8px;
+  }
+
+  .perfil_tabs .tab_btn {
+    padding: 12px 0;
+    font-size: 14px;
+  }
+
+  .perfil_tabs > .tab_btn:first-child {
+    border-radius: 8px 0 0 8px;
+  }
+
+  .perfil_tabs > .tab_btn:last-child {
+    border-radius: 0 8px 8px 0;
+  }
+}

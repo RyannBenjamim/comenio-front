@@ -20,7 +20,6 @@ const Perfil = () => {
       <Header />
 
       <main className={styles.perfil_main}>
-         ------ resolver bug do f5 ------
         <div className={styles.perfil_tabs}>
           <Link
             to={isMyProfile ? '/perfil' : `/perfil/${nickname}`}

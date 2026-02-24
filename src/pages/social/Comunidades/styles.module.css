@@ -50,3 +50,28 @@
   font-size: 14px;
   padding: 20px;
 }
+
+@media (max-width: 1366px) {
+  .comunidades_box {
+    gap: 10px;
+  }
+
+  .card_link {
+    padding: 12px 14px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  .card_link i {
+    font-size: 18px;
+  }
+
+  .card_link p {
+    font-size: 14px;
+  }
+
+  .empty {
+    font-size: 13px;
+    padding: 16px;
+  }
+}
