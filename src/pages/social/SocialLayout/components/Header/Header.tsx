@@ -3,7 +3,7 @@ import { useTheme } from "../../../../../context/ThemeContext";
 import { useAuth } from "../../../../../hooks/useAuth";
 import styles from "./styles.module.css";
 
-const logo = '/images/logo.svg'
+//const logo = '/images/logo.svg'
 const logoV2 = '/images/logoV2.svg'
 
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
       <div className={styles.header_01}></div>
       <div className={styles.header_02}>
         <div className={styles.content}>
-          <img src={theme === 'light' ? logo : logoV2} alt="logo" className={styles.logo} />
+          <img src={logoV2} alt="logo" className={styles.logo} />
           {/*<div className={styles.search_box}>
             <i className="fa-solid fa-magnifying-glass"></i>
             <input
