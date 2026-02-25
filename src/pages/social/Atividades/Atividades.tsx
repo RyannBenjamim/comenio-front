@@ -6,13 +6,16 @@ import type { Comunidade } from '../../../types/comunidades'
 import { findAll } from '../../../api/comunidades.service'
 import { useAuth } from '../../../hooks/useAuth'
 import { findOne } from '../../../api/usuarios/usuarios.service'
+import Loading from '../../../components/Loading/Loading'
 
 const Atividades = () => {
   const { user: authUser } = useAuth();
   const [comunidades, setComunidades] = useState<Comunidade[]>([]);
-  //const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     if (!authUser) return;
 
     const loadComunidades = async () => {
@@ -23,12 +26,16 @@ const Atividades = () => {
         setComunidades(response.data);
       } catch (error) {
         console.error('Erro ao buscar comunidades', error);
-        //setLoading(false);
+        setLoading(false);
       }
     }
 
     loadComunidades();
   }, [])
+
+  if (loading) {
+    return <Loading />
+  }
 
   return (
     <main className={styles.container}>
