@@ -3,6 +3,7 @@ import styles from './styles.module.css'
 import { getStudentCommunities } from '../../../api/comunidades.service';
 import InfoBox from '../../../components/InfoBox/InfoBox';
 import { Link } from 'react-router-dom';
+import Loading from '../../../components/Loading/Loading';
 
 interface Comunitites {
   id: string
@@ -11,9 +12,17 @@ interface Comunitites {
 
 const Comunidades = () => {
   const [comunitities, setComunitities] = useState<Comunitites[] | null>(null);
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    getStudentCommunities().then(res => setComunitities(res.data));
+    try {
+      setLoading(true);
+      getStudentCommunities().then(res => setComunitities(res.data));
+    } catch(error) {
+      console.error('Erro ao buscar comunidades', error);
+    } finally {
+      setLoading(false);
+    }
   }, [])
 
   return (
@@ -26,12 +35,16 @@ const Comunidades = () => {
       />
 
       <div className={styles.comunidades_box}>
-        {comunitities?.map(comunititie => (
-          <Link className={styles.card_link} key={comunititie.id} to={`/comunidades/${comunititie.id}`}>
-            <i className="fa-solid fa-users"></i>
-            <p>{comunititie.titulo}</p>
-          </Link>
-        ))}
+        {loading ? <Loading /> :
+          comunitities?.map(comunititie => (
+            <Link to={`/comunidades/${comunititie.id}`}>
+              <div className={styles.card_link} key={comunititie.id}>
+                <i className="fa-solid fa-users"></i>
+                <p>{comunititie.titulo}</p>
+              </div>
+            </Link>
+          ))
+        }
       </div>
     </main>
   )

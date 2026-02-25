@@ -26,16 +26,13 @@ const Atividades = () => {
         setComunidades(response.data);
       } catch (error) {
         console.error('Erro ao buscar comunidades', error);
+      } finally {
         setLoading(false);
       }
     }
 
     loadComunidades();
   }, [])
-
-  if (loading) {
-    return <Loading />
-  }
 
   return (
     <main className={styles.container}>
@@ -46,15 +43,17 @@ const Atividades = () => {
       />
 
       <div className={styles.comunitities}>
-        {comunidades.map(comunidade => (
-          <CommunityCard 
-            key={comunidade.id}
-            id={comunidade.id}
-            communityName={comunidade.titulo}
-            professorName={comunidade.professor}
-            pendingActivities={6}
-          />
-        ))}
+        {loading ? <Loading /> : 
+          comunidades.map(comunidade => (
+            <CommunityCard 
+              key={comunidade.id}
+              id={comunidade.id}
+              communityName={comunidade.titulo}
+              professorName={comunidade.professor}
+              pendingActivities={6}
+            />
+          ))
+        }
       </div>
     </main>
   )
