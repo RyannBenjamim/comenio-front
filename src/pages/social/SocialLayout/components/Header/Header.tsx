@@ -7,7 +7,7 @@ const logo = '/images/logo.svg'
 const logoV2 = '/images/logoV2.svg'
 
 const Header = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, /*toggleTheme*/ } = useTheme();
   const { logout } = useAuth();
 
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const Header = () => {
             }}>
               <i className="fa-solid fa-power-off"></i>
             </div>
-            <div className={styles.theme_btn} onClick={toggleTheme}>
+            <div className={styles.theme_btn}>
               {theme === 'light' ? <i className="fa-solid fa-moon"></i> : <i className="fa-solid fa-sun"></i>}
             </div>
           </div>
