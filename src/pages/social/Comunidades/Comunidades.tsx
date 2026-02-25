@@ -15,8 +15,9 @@ const Comunidades = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
+    setLoading(true);
+    
     try {
-      setLoading(true);
       getStudentCommunities().then(res => setComunitities(res.data));
     } catch(error) {
       console.error('Erro ao buscar comunidades', error);
