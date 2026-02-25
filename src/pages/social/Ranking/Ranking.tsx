@@ -41,7 +41,7 @@ const Ranking = () => {
     const ranking = [];
 
     for (let i = 0; i < nomes.length; i++) {
-      const fotoUrl = `https://xsgames.co/randomusers/avatar.php?g=pixel&seed=${i}`;
+      const fotoUrl = '/images/avatar-default.png';
 
       ranking.push({
         username: nomes[i],
