@@ -80,7 +80,7 @@ const Login = () => {
         </form>
       </div>
 
-      <p className={styles.credits}>&copy; 2025 Comenio from Ryan Benjamim</p>
+      <p className={styles.credits}>&copy; 2026 Comenio from Ryan Benjamim</p>
     </div>
   )
 }
