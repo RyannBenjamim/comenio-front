@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './styles.module.css'
 import { getStudentCommunities } from '../../../../../api/comunidades.service';
 import { Link } from 'react-router-dom';
+import { useWindowHeight } from '../../../../../hooks/useWindowHeight';
 
 const links = [
   { name: "Página inicial", icon: "fa-solid fa-house", path: "" },
@@ -21,6 +22,15 @@ interface Comunitites {
 const LeftAside = () => {
   const [comunitities, setComunitities] = useState<Comunitites[] | null>(null);
   const [activeTab, setActiveTab] = useState("Página inicial");
+  const windowHeight = useWindowHeight();
+
+  const comunititiesItensSize = (comunititiesArray: Comunitites[]) => {
+    if (windowHeight <= 770) {
+      return comunititiesArray.slice(0, 3);
+    } else {
+      return comunititiesArray.slice(0, 4);
+    }
+  } 
 
   useEffect(() => {
     getStudentCommunities().then(res => setComunitities(res.data));
@@ -40,7 +50,7 @@ const LeftAside = () => {
       </div>
 
       <div className={styles.la_02}>
-        {comunitities ? comunitities.slice(0, 4).map((comunititie, index) => (
+        {comunitities ? comunititiesItensSize(comunitities).map((comunititie, index) => (
           <Link className={styles.card_link} key={index} to={`/comunidades/${comunititie.id}`}>
             <i className="fa-solid fa-users"></i>
             <p>{comunititie.titulo}</p>
