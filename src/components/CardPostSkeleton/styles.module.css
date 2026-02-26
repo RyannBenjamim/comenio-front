@@ -134,7 +134,7 @@
   border-radius: 50%;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .card,
   .card_comment {
     padding: 12px 14px 10px;
@@ -188,5 +188,112 @@
   .number {
     width: 8px;
     height: 8px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .card,
+  .card_comment {
+    padding: 10px 12px 9px;
+    gap: 8px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .username,
+  .nickname,
+  .badge,
+  .time {
+    height: 11px;
+  }
+
+  .username,
+  .nickname {
+    width: 60px;
+  }
+
+  .badge {
+    width: 45px;
+  }
+
+  .time {
+    width: 30px;
+  }
+
+  .text {
+    height: 12px;
+  }
+
+  .picture {
+    height: 260px;
+    border-radius: 12px;
+  }
+
+  .line02 {
+    gap: 16px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .number {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card,
+  .card_comment {
+    padding: 9px 11px 8px;
+    gap: 6px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .username,
+  .nickname {
+    width: 55px;
+    height: 10px;
+  }
+
+  .badge {
+    width: 40px;
+    height: 10px;
+  }
+
+  .time {
+    width: 26px;
+    height: 10px;
+  }
+
+  .text {
+    height: 11px;
+  }
+
+  .picture {
+    height: 220px;
+  }
+
+  .line02 {
+    gap: 14px;
+  }
+
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .number {
+    width: 6px;
+    height: 6px;
   }
 }

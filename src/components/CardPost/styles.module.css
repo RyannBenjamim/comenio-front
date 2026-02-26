@@ -201,7 +201,7 @@
   font-size: 14px;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .card {
     padding: 12px 14px 10px;
     border-radius: 12px;
@@ -264,5 +264,123 @@
   .like i,
   .comment i {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .card {
+    padding: 10px 12px 9px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .profile_picture {
+    width: 32px;
+    height: 32px;
+  }
+
+  .username {
+    font-size: 13.5px;
+  }
+
+  .infos p,
+  .author_text,
+  .time_details {
+    font-size: 12.5px;
+  }
+
+  .community_badge {
+    font-size: 9.5px;
+    padding: 2px 6px;
+  }
+
+  .community_badge i {
+    font-size: 8.5px;
+  }
+
+  .text_content {
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+
+  .post_picture {
+    max-height: 400px;
+  }
+
+  .action_btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .line02 {
+    gap: 16px;
+  }
+
+  .like,
+  .comment,
+  .total_likes,
+  .total_comments {
+    font-size: 12.5px;
+  }
+
+  .like i,
+  .comment i {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card {
+    padding: 9px 11px 8px;
+    gap: 6px;
+  }
+
+  .profile_picture {
+    width: 28px;
+    height: 28px;
+  }
+
+  .username {
+    font-size: 13px;
+  }
+
+  .infos p,
+  .author_text,
+  .time_details {
+    font-size: 12px;
+  }
+
+  .community_badge {
+    font-size: 9px;
+    padding: 1px 5px;
+  }
+
+  .text_content {
+    font-size: 13px;
+  }
+
+  .post_picture {
+    max-height: 340px;
+  }
+
+  .action_btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .line02 {
+    gap: 14px;
+  }
+
+  .like,
+  .comment,
+  .total_likes,
+  .total_comments {
+    font-size: 12px;
+  }
+
+  .like i,
+  .comment i {
+    font-size: 14px;
   }
 }

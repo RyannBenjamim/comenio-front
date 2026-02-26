@@ -168,7 +168,7 @@ textarea::placeholder {
   background: var(--color-primary-light);
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .card {
     padding: 16px;
     border-radius: 12px;
@@ -262,5 +262,188 @@ textarea::placeholder {
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .card {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .cardHeader {
+    margin-bottom: 10px;
+  }
+
+  .cardHeader h2 {
+    font-size: 1rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    padding: 4px 9px;
+  }
+
+  .divider {
+    margin: 10px 0;
+  }
+
+  .descricao {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+
+  .field {
+    grid-template-columns: 110px 1fr;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  .field strong {
+    font-size: 0.75rem;
+  }
+
+  .field span {
+    font-size: 0.85rem;
+  }
+
+  .fieldForm {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  label {
+    font-size: 12.5px;
+  }
+
+  small {
+    font-size: 10.5px;
+  }
+
+  .download {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    border-radius: 7px;
+    gap: 5px;
+  }
+
+  .form {
+    gap: 14px;
+  }
+
+  .fileInput {
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 0.85rem;
+  }
+
+  textarea {
+    padding: 9px;
+    border-radius: 7px;
+    font-size: 0.85rem;
+  }
+
+  .actions {
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .cancel {
+    padding: 7px 12px;
+    border-radius: 7px;
+    font-size: 0.8rem;
+  }
+
+  .submit {
+    padding: 7px 14px;
+    border-radius: 7px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card {
+    padding: 12px;
+    border-radius: 9px;
+  }
+
+  .cardHeader h2 {
+    font-size: 0.95rem;
+  }
+
+  .tag {
+    font-size: 0.6rem;
+    padding: 4px 8px;
+  }
+
+  .divider {
+    margin: 8px 0;
+  }
+
+  .descricao {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .field {
+    grid-template-columns: 95px 1fr;
+    gap: 4px;
+  }
+
+  .field strong {
+    font-size: 0.7rem;
+  }
+
+  .field span {
+    font-size: 0.8rem;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  small {
+    font-size: 10px;
+  }
+
+  .download {
+    padding: 6px 9px;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    gap: 4px;
+  }
+
+  .form {
+    gap: 12px;
+  }
+
+  .fileInput {
+    padding: 9px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+  }
+
+  textarea {
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+  }
+
+  .actions {
+    gap: 6px;
+  }
+
+  .cancel {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+  }
+
+  .submit {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
   }
 }

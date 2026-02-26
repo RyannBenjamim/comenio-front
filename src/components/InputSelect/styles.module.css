@@ -25,3 +25,27 @@
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 1300px) {
+  .input_card {
+    padding: 0 10px;
+    border-radius: 5px;
+  }
+
+  .input_card select {
+    padding: 7px 0;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .input_card {
+    padding: 0 8px;
+    border-radius: 4px;
+  }
+
+  .input_card select {
+    padding: 6px 0;
+    font-size: 0.8rem;
+  }
+}

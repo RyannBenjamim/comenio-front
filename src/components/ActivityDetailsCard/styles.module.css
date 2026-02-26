@@ -69,7 +69,7 @@
   background: var(--color-primary);
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .card {
     padding: 16px;
     border-radius: 12px;
@@ -108,5 +108,89 @@
     font-size: 0.85rem;
     border-radius: 8px;
     gap: 6px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .card {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    padding: 4px 9px;
+  }
+
+  .divider {
+    margin: 10px 0;
+  }
+
+  .infoGrid {
+    grid-template-columns: 110px 1fr;
+    gap: 5px;
+  }
+
+  .infoGrid strong {
+    font-size: 0.75rem;
+  }
+
+  .infoGrid span {
+    font-size: 0.85rem;
+  }
+
+  .descricao {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+
+  .download {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    border-radius: 7px;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card {
+    padding: 12px;
+    border-radius: 9px;
+  }
+
+  .tag {
+    font-size: 0.6rem;
+    padding: 4px 8px;
+  }
+
+  .divider {
+    margin: 8px 0;
+  }
+
+  .infoGrid {
+    grid-template-columns: 95px 1fr;
+    gap: 4px;
+  }
+
+  .infoGrid strong {
+    font-size: 0.7rem;
+  }
+
+  .infoGrid span {
+    font-size: 0.8rem;
+  }
+
+  .descricao {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .download {
+    padding: 6px 9px;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    gap: 4px;
   }
 }

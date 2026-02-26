@@ -228,7 +228,7 @@
   font-weight: 400;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .ranking_box {
     padding: 16px;
     border-radius: 12px;
@@ -302,5 +302,147 @@
 
   .points {
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1300px) {
+  .ranking_box {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  .tabs {
+    margin-bottom: 20px;
+  }
+
+  .tab_btn {
+    padding: 7px 0;
+    font-size: 10.5px;
+  }
+
+  .top3_box {
+    margin-bottom: 14px;
+    gap: 4px;
+  }
+
+  .top3_item:nth-child(2) {
+    transform: translateY(-10px);
+  }
+
+  .top3_item .crown i {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .profile_picture_t3 {
+    width: 60px;
+    height: 60px;
+  }
+
+  .position_t3 {
+    width: 20px;
+    height: 20px;
+    font-size: 0.6rem;
+    bottom: 20px;
+  }
+
+  .username_t3,
+  .points_t3 {
+    font-size: 0.6rem;
+    max-width: 65px;
+  }
+
+  .afterTheTop3_box {
+    gap: 4px;
+  }
+
+  .ranking_card {
+    padding: 6px;
+    border-radius: 6px;
+  }
+
+  .profile_picture {
+    width: 24px;
+    height: 24px;
+  }
+
+  .position {
+    font-size: 0.7rem;
+  }
+
+  .text_infos {
+    font-size: 0.6rem;
+  }
+
+  .points {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ranking_box {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .tabs {
+    margin-bottom: 16px;
+  }
+
+  .tab_btn {
+    padding: 6px 0;
+    font-size: 10px;
+  }
+
+  .top3_item:nth-child(2) {
+    transform: translateY(-6px);
+  }
+
+  .top3_item .crown i {
+    font-size: 18px;
+  }
+
+  .profile_picture_t3 {
+    width: 52px;
+    height: 52px;
+  }
+
+  .position_t3 {
+    width: 18px;
+    height: 18px;
+    font-size: 0.55rem;
+    bottom: 16px;
+  }
+
+  .username_t3,
+  .points_t3 {
+    font-size: 0.55rem;
+    max-width: 55px;
+  }
+
+  .ranking_card {
+    padding: 5px 6px;
+  }
+
+  .profile_picture {
+    width: 22px;
+    height: 22px;
+  }
+
+  .position,
+  .points {
+    font-size: 0.65rem;
+  }
+
+  .text_infos {
+    font-size: 0.55rem;
   }
 }

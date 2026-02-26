@@ -18,7 +18,7 @@ main {
   justify-content: center;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   main {
     gap: 12px;
     padding-bottom: 70px;
@@ -28,5 +28,31 @@ main {
     height: 320px;
     border-width: 2px;
     border-radius: 8px;
+  }
+}
+
+@media (max-width: 1300px) {
+  main {
+    gap: 10px;
+    padding-bottom: 60px;
+  }
+
+  .post {
+    height: 280px;
+    border-width: 2px;
+    border-radius: 7px;
+  }
+}
+
+@media (max-width: 1200px) {
+  main {
+    gap: 8px;
+    padding-bottom: 50px;
+  }
+
+  .post {
+    height: 240px;
+    border-width: 1.5px;
+    border-radius: 6px;
   }
 }

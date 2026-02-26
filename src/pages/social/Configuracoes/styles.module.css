@@ -163,7 +163,7 @@
   background-color: var(--color-primary-light);
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .main_config {
     padding: 16px;
     border-radius: 12px;
@@ -224,3 +224,118 @@
   }
 }
 
+@media (max-width: 1300px) {
+  .main_config {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .profile_picture_Box {
+    margin-bottom: 18px;
+  }
+
+  .profile_picture {
+    width: 90px;
+    height: 90px;
+  }
+
+  .uploud_icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .uploud_icon i {
+    font-size: 0.85rem;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+
+  .infosPerfil_form,
+  .password_form,
+  .password_box {
+    gap: 14px;
+  }
+
+  .input p,
+  .input_title {
+    font-size: 0.8rem;
+  }
+
+  .input input,
+  .input textarea {
+    padding: 7px 9px;
+    font-size: 0.85rem;
+  }
+
+  .input textarea {
+    min-height: 90px;
+  }
+
+  .infosPerfil_form_btn,
+  .password_form_btn {
+    padding: 7px 16px;
+    font-size: 0.85rem;
+  }
+
+  .diviser {
+    margin: 24px 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .main_config {
+    padding: 12px;
+  }
+
+  .profile_picture {
+    width: 80px;
+    height: 80px;
+  }
+
+  .uploud_icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .uploud_icon i {
+    font-size: 0.8rem;
+  }
+
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .infosPerfil_form,
+  .password_form,
+  .password_box {
+    gap: 12px;
+  }
+
+  .input p,
+  .input_title {
+    font-size: 0.75rem;
+  }
+
+  .input input,
+  .input textarea {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .input textarea {
+    min-height: 80px;
+  }
+
+  .infosPerfil_form_btn,
+  .password_form_btn {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+
+  .diviser {
+    margin: 20px 0;
+  }
+}

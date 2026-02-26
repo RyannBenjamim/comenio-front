@@ -100,7 +100,7 @@
   margin: 0 auto;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .welcome_box,
   .welcome_loader {
     height: 210px;
@@ -133,5 +133,75 @@
     font-size: 10px;
     padding: 3px 8px;
     border-radius: 6px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .welcome_box,
+  .welcome_loader {
+    height: 190px;
+  }
+
+  .welcome_box .wb_header {
+    height: 58px;
+  }
+
+  .welcome_box .wb_picture {
+    top: 30px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .welcome_box .wb_text {
+    margin-top: 38px;
+  }
+
+  .welcome_box .wb_text .text01 {
+    font-size: 11px;
+  }
+
+  .welcome_box .wb_text .text02 {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  .welcome_box .wb_text .cargo {
+    font-size: 9.5px;
+    padding: 3px 7px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .welcome_box,
+  .welcome_loader {
+    height: 175px;
+  }
+
+  .welcome_box .wb_header {
+    height: 52px;
+  }
+
+  .welcome_box .wb_picture {
+    top: 26px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .welcome_box .wb_text {
+    margin-top: 34px;
+  }
+
+  .welcome_box .wb_text .text01 {
+    font-size: 10.5px;
+  }
+
+  .welcome_box .wb_text .text02 {
+    font-size: 12px;
+  }
+
+  .welcome_box .wb_text .cargo {
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 5px;
   }
 }

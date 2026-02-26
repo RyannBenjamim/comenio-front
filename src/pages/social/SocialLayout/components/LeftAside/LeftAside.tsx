@@ -25,7 +25,9 @@ const LeftAside = () => {
   const windowHeight = useWindowHeight();
 
   const comunititiesItensSize = (comunititiesArray: Comunitites[]) => {
-    if (windowHeight <= 770) {
+    if (windowHeight <= 670) {
+      return comunititiesArray.slice(0, 2);
+    } else if (windowHeight <= 770) {
       return comunititiesArray.slice(0, 3);
     } else {
       return comunititiesArray.slice(0, 4);

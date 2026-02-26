@@ -54,7 +54,9 @@ const Ranking = () => {
   const windowHeight = useWindowHeight();
 
   const rankingItensSize = (rankingArray: RankingItem[]) => {
-    if (windowHeight <= 770) {
+    if (windowHeight <= 670) {
+      return rankingArray.slice(2, 5);
+    } else if (windowHeight <= 770) {
       return rankingArray.slice(2, 6);
     } else if (windowHeight <= 800) {
       return rankingArray.slice(3)

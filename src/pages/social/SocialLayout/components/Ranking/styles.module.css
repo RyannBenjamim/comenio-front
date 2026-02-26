@@ -185,7 +185,7 @@
   font-weight: 400;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .ranking_box {
     padding: 14px;
   }
@@ -251,5 +251,108 @@
   .position {
     font-size: 0.7rem;
   }
+}
 
+@media (max-width: 1300px) {
+  .ranking_box {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  .tabs {
+    margin-bottom: 16px;
+  }
+
+  .tab_btn {
+    font-size: 10.5px;
+    padding: 7px 0;
+  }
+
+  .top3_item:nth-child(2) {
+    transform: translateY(-4px);
+  }
+
+  .profile_picture_t3 {
+    width: 32px;
+    height: 32px;
+  }
+
+  .position_t3 {
+    width: 15px;
+    height: 15px;
+    font-size: 0.6rem;
+    bottom: 24px;
+  }
+
+  .username_t3,
+  .points_t3 {
+    font-size: 0.6rem;
+  }
+
+  .ranking_card {
+    padding: 5px;
+  }
+
+  .profile_picture {
+    width: 24px;
+    height: 24px;
+  }
+
+  .username {
+    font-size: 0.6rem;
+  }
+
+  .points,
+  .position {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ranking_box {
+    padding: 10px;
+  }
+
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .tab_btn {
+    font-size: 10px;
+  }
+
+  .profile_picture_t3 {
+    width: 28px;
+    height: 28px;
+  }
+
+  .position_t3 {
+    width: 14px;
+    height: 14px;
+    font-size: 0.55rem;
+    bottom: 22px;
+  }
+
+  .username_t3,
+  .points_t3 {
+    font-size: 0.55rem;
+  }
+
+  .profile_picture {
+    width: 22px;
+    height: 22px;
+  }
+
+  .username {
+    font-size: 0.55rem;
+  }
+
+  .points,
+  .position {
+    font-size: 0.6rem;
+  }
 }
